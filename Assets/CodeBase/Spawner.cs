@@ -19,6 +19,8 @@ public class Spawner : MonoCache
     private float _maxTimeSpawn;
     private float _level = 1;
 
+    public List<Ball> BallsFree => _ballsFree;
+
     private float _randomY
     {
         get { return Random.Range(_point1.position.y, _point2.position.y); }

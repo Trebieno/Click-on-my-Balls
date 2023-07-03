@@ -51,6 +51,7 @@ public class Ball : MonoBehaviour, IPointerDownHandler
         _specifications = new Specifications(_level, _healing.MaximumHealth, _silver, _gold, _speed, _damage);
         Initialize(_level);
         BallAll.Instance.Balls.Add(gameObject, this);
+        _healing.Murdered += TakeResourse;
     }
     
     public void Initialize(float level)
@@ -67,7 +68,12 @@ public class Ball : MonoBehaviour, IPointerDownHandler
 
     private void OnDisable()
     {
-        
+        SpawnerCache.Instance.Spawner.BallsFree.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        _healing.Murdered -= TakeResourse;
     }
 
 
@@ -84,4 +90,10 @@ public class Ball : MonoBehaviour, IPointerDownHandler
     {
         _healing.SetDamage(PlayerCache.Instance.Player.Damage, transform.position);
     }
+
+    private void TakeResourse()
+    {
+        PlayerCache.Instance.Player.ResourceModifying(_gold, _silver);
+    }
+    
 }
