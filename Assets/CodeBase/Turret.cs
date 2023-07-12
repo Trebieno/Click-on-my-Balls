@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoCache
 {
     [SerializeField] private RectTransform _target;
     [SerializeField] private float _rotationSpeed = 5f;
@@ -16,9 +17,14 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject _bulletPref;
     [SerializeField] private Transform _canvas;
     
-    private float fireTimer; 
+    private float fireTimer;
 
-    private void Update()
+    private void Start()
+    {
+        _canvas = CanvasCache.Instance.Canvas;
+    }
+
+    public override void OnUpdateTick()
     {
         if (_target == null || !_target.gameObject.activeSelf)
         {
