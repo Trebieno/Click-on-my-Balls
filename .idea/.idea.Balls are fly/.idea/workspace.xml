@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ef8d97-f99e-48c5-b63c-656763d70751" name="Changes" comment=".">
+    <list default="true" id="08ef8d97-f99e-48c5-b63c-656763d70751" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Balls are fly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Balls are fly/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Ball/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Ball/Ball.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/SystemComponents/FPS.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/SystemComponents/FPS.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gameplay.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gameplay.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +107,21 @@
       <workItem from="1688300487147" duration="1492000" />
       <workItem from="1688302070371" duration="5559000" />
       <workItem from="1688321370601" duration="8787000" />
-      <workItem from="1688355979628" duration="2780000" />
+      <workItem from="1688355979628" duration="14667000" />
+      <workItem from="1688459660799" duration="4880000" />
+      <workItem from="1688534772026" duration="5697000" />
+      <workItem from="1689069005130" duration="3048000" />
+      <workItem from="1689137328896" duration="470000" />
     </task>
+    <task id="LOCAL-00001" summary="Добавил фпс, подправил мячик, сделал пару синглтонов.">
+      <option name="closed" value="true" />
+      <created>1688358836683</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688358836683</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +133,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="0.2" />
+    <MESSAGE value="Добавил фпс, подправил мячик, сделал пару синглтонов." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил фпс, подправил мячик, сделал пару синглтонов." />
   </component>
 </project>

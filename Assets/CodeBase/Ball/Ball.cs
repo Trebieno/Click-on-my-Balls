@@ -6,6 +6,17 @@ using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 
+public enum Buffs
+{
+    DamageX2,
+    SpeedY2,
+    GoldX2,
+    HP1,
+    HP2,
+    HP3
+}
+
+
 public struct Specifications
 {
     public float Level;
@@ -40,18 +51,33 @@ public class Ball : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
 
+    [Range(0, 100)] [SerializeField] private float _buffPercent = 10;
+    [SerializeField] private Buffs _buff;
     private Specifications _specifications;
 
     private float randomPercentage 
     {
         get { return Random.Range(0.5f, 1.5f); }
     }
+
     private void Start()
     {
+        _healing.Murdered += Murdered;
+        _healing.Died += Death;
+        
+        if(!BallAll.Instance.Balls.ContainsKey(gameObject))
+            BallAll.Instance.Balls.Add(gameObject, this);
+    }
+
+    public void StartBall(float level)
+    {
+        var buffs = Enum.GetValues(typeof(Buffs));
+        int randomBuffIndex = Random.Range(0, buffs.Length - 1);
+        _buff = (Buffs)buffs.GetValue(randomBuffIndex);
+
         _specifications = new Specifications(_level, _healing.MaximumHealth, _silver, _gold, _speed, _damage);
-        Initialize(_level);
-        BallAll.Instance.Balls.Add(gameObject, this);
-        _healing.Murdered += TakeResourse;
+        Initialize(level);
+
     }
     
     public void Initialize(float level)
@@ -61,28 +87,28 @@ public class Ball : MonoBehaviour, IPointerDownHandler
         _silver = _specifications.Silver * _level * randomPercentage;
         _gold = _specifications.Gold * _level * randomPercentage;
         _speed = _specifications.Speed * _level * randomPercentage;
-        _damage = _specifications.Damage * _level * randomPercentage;
+        _damage = _specifications.Damage;
 
-        _healing.Heal(_healing.MaximumHealth);
+        _healing.CurrentHealth = _healing.MaximumHealth;
     }
 
-    private void OnDisable()
-    {
-        SpawnerCache.Instance.Spawner.BallsFree.Add(this);
-    }
 
     private void OnDestroy()
     {
-        _healing.Murdered -= TakeResourse;
+        _healing.Murdered -= Murdered;
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("KillZone"))
         {
             _healing.Death();
             PlayerCache.Instance.Player.Healing.SetDamage(_damage, transform.position);
+        }
+        if (other.CompareTag("bullet"))
+        {
+            Destroy(other.gameObject);
+            _healing.SetDamage(PlayerCache.Instance.Player.Damage, other.transform.position);
         }
     }
 
@@ -91,9 +117,34 @@ public class Ball : MonoBehaviour, IPointerDownHandler
         _healing.SetDamage(PlayerCache.Instance.Player.Damage, transform.position);
     }
 
-    private void TakeResourse()
+    public void BuffPlayer()
     {
+        if (PlayerCache.Instance.Player.SpeedY2)
+            _speed /= 2;
+    }
+
+    public void RemoveBuffPlayer()
+    {
+        if (!PlayerCache.Instance.Player.SpeedY2)
+            _speed *= 2;
+    }
+    
+    private void Murdered()
+    {
+        float random = Random.Range(0, 1);
+        if (random <= _buffPercent/100)
+        {
+            Effect effect = new Effect(_buff, 15);
+            PlayerCache.Instance.Player.AddEffect(effect);
+        }
         PlayerCache.Instance.Player.ResourceModifying(_gold, _silver);
     }
     
+    private void Death()
+    {
+          if(gameObject.CompareTag("Boss"))
+            Destroy(gameObject);
+        else
+            SpawnerCache.Instance.Spawner.BallsFree.Add(this);
+    }
 }
