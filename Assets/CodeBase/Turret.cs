@@ -6,31 +6,32 @@ using UnityEngine.Serialization;
 
 public class Turret : MonoCache
 {
-    [SerializeField] private RectTransform _target;
+    [SerializeField] private Transform _target;
     [SerializeField] private float _rotationSpeed = 5f;
     [SerializeField] private float _actionRadius = 10f;
     [SerializeField] private float _fireDelay = 1f;
     [SerializeField] private float _forceBullet = 5f;
     [SerializeField] private LayerMask _actionMask;
-    [SerializeField] private Vector3 _offset;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private GameObject _bulletPref;
-    [SerializeField] private Transform _canvas;
-    
     private float fireTimer;
 
     private void Start()
     {
-        _canvas = CanvasCache.Instance.Canvas;
+        
     }
 
     public override void OnUpdateTick()
     {
+        if (_target != null && !_target.gameObject.activeSelf)
+            _target = null;
+        
         if (_target == null || !_target.gameObject.activeSelf)
         {
             var colliders = Physics2D.OverlapCircleAll(transform.position, _actionRadius, _actionMask);
             if (colliders.Length > 0)
-                _target = colliders[0].GetComponent<RectTransform>();
+                if(colliders[0].gameObject.activeSelf)
+                    _target = colliders[0].transform;
         }
         
         if (_target != null)
@@ -70,11 +71,14 @@ public class Turret : MonoCache
 
     private void Fire()
     {
-        var scale = _bulletPref.transform.localScale;
-        var bullet = Instantiate(_bulletPref, transform.GetComponent<RectTransform>().position, Quaternion.identity).GetComponent<Rigidbody2D>();
-        bullet.transform.localScale = scale;
-        bullet.AddForce(transform.up * _forceBullet, ForceMode2D.Impulse);
-        bullet.transform.parent = _canvas;
+        var bullet = Instantiate(_bulletPref, _rigidbody2D.transform.position, _rigidbody2D.transform.rotation).GetComponent<Rigidbody2D>();
+        bullet.AddForce(_rigidbody2D.transform.up * _forceBullet, ForceMode2D.Impulse);
         Destroy(bullet.gameObject, 5f);
-    } 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, _actionRadius); 
+    }
 }

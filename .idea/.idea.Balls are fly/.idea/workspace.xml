@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ef8d97-f99e-48c5-b63c-656763d70751" name="Changes" comment="Add Turret">
+    <list default="true" id="08ef8d97-f99e-48c5-b63c-656763d70751" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Balls are fly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Balls are fly/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CodeBase/SystemComponents/CanvasCache.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/SystemComponents/CanvasCache.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/Turret.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/CodeBase/UI/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CodeBase/UI/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Ball.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/BallBoss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/BallBoss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Image.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Image.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Turret.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Turret.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bullet.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Gameplay.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +119,8 @@
       <workItem from="1688459660799" duration="4880000" />
       <workItem from="1688534772026" duration="5697000" />
       <workItem from="1689069005130" duration="3048000" />
-      <workItem from="1689137328896" duration="2324000" />
+      <workItem from="1689137328896" duration="10555000" />
+      <workItem from="1689320585289" duration="7945000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил фпс, подправил мячик, сделал пару синглтонов.">
       <option name="closed" value="true" />
@@ -134,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689137823175</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавил ячейки. Пример её на сцене">
+      <option name="closed" value="true" />
+      <created>1689140591031</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689140591031</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +169,7 @@
     <MESSAGE value="0.2" />
     <MESSAGE value="Добавил фпс, подправил мячик, сделал пару синглтонов." />
     <MESSAGE value="Add Turret" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Turret" />
+    <MESSAGE value="Добавил ячейки. Пример её на сцене" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил ячейки. Пример её на сцене" />
   </component>
 </project>

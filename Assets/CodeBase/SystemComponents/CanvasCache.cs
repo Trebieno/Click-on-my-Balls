@@ -8,7 +8,12 @@ public class CanvasCache : MonoBehaviour
     public static CanvasCache Instance { get; private set; }
 
     public Transform Canvas;
-    
+
+    // private void OnEnable()
+    // {
+    //     Canvas = GameObject.Find("MainCanvas").transform;
+    // }
+
     private void Awake()
     {
         if (Instance == null)

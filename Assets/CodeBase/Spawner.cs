@@ -13,7 +13,6 @@ public class Spawner : MonoCache
     [SerializeField] private List<Ball> _ballsPref;
     [SerializeField] private List<Ball> _ballsFree;
     
-    [SerializeField] private Transform _canvas;
     [SerializeField] private float _maxTimeSpawn = 1;
     [SerializeField] private int _startBall;
     [SerializeField] private float _modifyLvl = 0.5f;
@@ -28,7 +27,7 @@ public class Spawner : MonoCache
 
     private void Start()
     {
-        PlayerCache.Instance.Player.MinutesChange += LvlUp;
+        PlayerCache.Instance.Player.MinutesChanged += LvlUp;
         _maxTimeSpawn = _timeSpawn;
         for (int i = 0; i < _startBall; i++)
         {
@@ -39,7 +38,7 @@ public class Spawner : MonoCache
 
     private void OnDestroy()
     {
-        PlayerCache.Instance.Player.MinutesChange -= LvlUp;
+        PlayerCache.Instance.Player.MinutesChanged -= LvlUp;
     }
 
     public override void OnFixedUpdateTick()
@@ -59,12 +58,9 @@ public class Spawner : MonoCache
 
     private Ball SpawnPoint(Ball ball)
     {
-        Vector3 scale = ball.transform.localScale;
         float offsetX = GetOffsetX(ball.transform.localScale);
 
-        ball = Instantiate(ball, new Vector3(offsetX, _randomY, 0), Quaternion.identity);
-        ball.transform.parent = _canvas;
-        ball.transform.localScale = scale;
+        ball = Instantiate(ball, new Vector2(transform.position.x + offsetX, _randomY), Quaternion.identity);
         
         return ball;
     }
@@ -73,7 +69,7 @@ public class Spawner : MonoCache
     {
         float offsetX = GetOffsetX(ball.transform.localScale);
         ball.StartBall(_level);
-        ball.transform.position = new Vector3(offsetX, _randomY, 0);
+        ball.transform.position = new Vector3(transform.position.x + offsetX, _randomY, 0);
         ball.gameObject.SetActive(true);
         _ballsFree.Remove(ball);
     }

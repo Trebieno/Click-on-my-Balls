@@ -36,9 +36,12 @@ public class Player : MonoCache
     public float Damage => _damage;
     public bool GoldX2 => _goldX2;
     public bool SpeedY2 => _speedY2;
-    
 
-    public Action MinutesChange;
+
+    public Action MinutesChanged;
+    public Action<int> GoldChanged;
+    public Action<int> SilverChanged;
+    public Action<int> ScoreChanged;
 
 
     public void ResourceModifying(float gold, float silver)
@@ -48,6 +51,10 @@ public class Player : MonoCache
         else
             _gold += gold;
         _silver += silver;
+        
+        GoldChanged?.Invoke((int)_gold);
+        SilverChanged?.Invoke((int)_silver);
+        ScoreChanged?.Invoke(_score);
     }
 
     public void AddEffect(Effect effect)
@@ -153,7 +160,7 @@ public class Player : MonoCache
         // int milliseconds = Mathf.FloorToInt((time * 1000f) % 1000f);
         
         if(previousMinutes != minutes)
-            MinutesChange?.Invoke();
+            MinutesChanged?.Invoke();
         
         previousMinutes = minutes;
 
